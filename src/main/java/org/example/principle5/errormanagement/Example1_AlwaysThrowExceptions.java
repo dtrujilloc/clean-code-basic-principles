@@ -1,19 +1,23 @@
-package org.example.principle2.functions;
-
+package org.example.principle5.errormanagement;
 
 /**
- * Es importante siempre lanzar excepciones siempre que se presente un error y no devolver codigos de error. Esto es por que
+ * Este ejemplo tambien fue visto en principio 2 - funciones.
+ *
+ * Es importante lanzar excepciones siempre que se presente un error y no devolver codigos de error. Esto es por que
  * con las excepcones ya estas mapeando un error que puede ser tratado por try-catch
  */
 
-public class Example4_AlwaysThrowExceptions {
+import org.example.common.exceptions.InvalidNameException;
+import org.example.common.exceptions.YoungerException;
 
-    /**
-     * Supongamos que tenemos que devolver un saludo con el nombre del usuario pasado como parametro, solo si el nombre tiene mas de 5 letras
-     * y si la edad es mayor de 18 años
-     */
+/**
+ * Supongamos que tenemos que devolver un saludo con el nombre del usuario pasado como parametro, solo si el nombre tiene mas de 5 letras
+ * y si la edad es mayor de 18 años
+ */
 
-    // Ejemplo que NO cumple
+// Sin lanzar excepciones
+class ExampleA {
+
     public void printNameA(String name, Integer age){
 
         if(isAdultA(age).equalsIgnoreCase("YES"))
@@ -62,10 +66,14 @@ public class Example4_AlwaysThrowExceptions {
 
     /**
      * Notar como en la funcion principal se vuelve muy grande ya que las funciones de validacion solo devuelven codigos de error,
-     * esto hace que tenga que se tratadas de una forma que vuelve el codigo mas sucio.
+     * esto hace que tengan que ser tratadas de una forma que vuelve el codigo mas sucio.
      */
+}
 
-    // Ejemplo que SI cumple
+
+// Lanzando excepciones
+class ExampleB {
+
     public void printNameSafely(String name, Integer age){
         try {
             printNameB(name, age);
@@ -76,13 +84,13 @@ public class Example4_AlwaysThrowExceptions {
         }
     }
 
-    public void printNameB(String name, Integer age) {
+    public void printNameB(String name, Integer age) throws InvalidNameException, YoungerException {
         isAdultB(age);
         isValidNameB(name);
         System.out.println(String.format("Hola %s, es un gusto saludarte", name));
     }
 
-    public boolean isAdultB(Integer age) {
+    public boolean isAdultB(Integer age) throws YoungerException {
         if (age < 18) {
             throw new YoungerException("Error, es menos de edad");
         }
@@ -90,7 +98,7 @@ public class Example4_AlwaysThrowExceptions {
         return true;
     }
 
-    public boolean isValidNameB(String name) {
+    public boolean isValidNameB(String name) throws InvalidNameException {
         if(name.length() < 5)
         {
             throw new InvalidNameException("Error, el nombre es invalido. Tiene menos de 5 caracteres");
@@ -99,23 +107,11 @@ public class Example4_AlwaysThrowExceptions {
         return true;
     }
 
-    public class YoungerException extends RuntimeException {
-        public YoungerException(String message) {
-            super(message);
-        }
-    }
-
-    public class InvalidNameException extends RuntimeException {
-        public InvalidNameException(String message) {
-            super(message);
-        }
-    }
-
     /**
      * Notar como en este ejemplo, la funcion principal es mucho mas limpia ya que las excepciones son lanzadas desde las propias
      * funciones de validacion (junto con sus propias excepciones). Ademas, cabe resaltar que se deja una funcion que se encarga
      * del proceso de llamar las funciones y otra funcion que se encarga de tratar las excepcion, esto para respetar el nivel de
      * abstraccion de las funciones.
      */
-
 }
+
