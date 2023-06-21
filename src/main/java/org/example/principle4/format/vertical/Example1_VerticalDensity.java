@@ -6,7 +6,7 @@ package org.example.principle4.format.vertical;
  * dentro de la clase
  */
 
-// Acontinuacion un ejemplo de mucha densidad
+// Ejemplo de mucha densidad
 class UserA {
     private String name;
     private String lastName;
@@ -28,7 +28,8 @@ class UserA {
     }
 }
 
-// Acontinuacion un ejemplo de poca densidad
+
+// Ejemplo de poca densidad
 class UserB {
     private String name;
     private String lastName;
