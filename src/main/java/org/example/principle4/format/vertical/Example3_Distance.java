@@ -90,7 +90,4 @@ public class Example3_Distance {
      * al principio del metodo B estan las inicializaciones de variables, en la segunda seccion estan las validaciones, y en
      * la tecera seccion esta el retorno.
      */
-
-
-
 }
