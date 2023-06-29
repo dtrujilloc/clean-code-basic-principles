@@ -7,7 +7,7 @@ import org.example.common.DivisionByZeroException;
  * segun lo esperado, y permiten que la refactorizacion de codigo se haga de una forma segura.
  *
  * A continuacion vemos una clase que contiene unos metodos que realiza operaciones matematicas la cual se tiene que probar
- * por medio de test unitarios. Estos test unitarios estan en la carpeta de test
+ * por medio de test unitarios.
  */
 public class Example1_calculator {
 
@@ -21,4 +21,12 @@ public class Example1_calculator {
 
         return num1 / num2;
     }
+
+    /**
+     * Es comun que los test relacionados a cada clase esten ubicados en la carpeta de Test, en el mismo nombre de paquete
+     * y con el mismo nombre de clase mas la palabra "Test". Esto con el proposito de identificar claramente la relacion de
+     * los test con la calse que esta deseando probar.
+     *
+     * Para continaur con la explicacion ver la clase de Example1_calculatorTest que se encuenta en la carpeta test
+     */
 }
