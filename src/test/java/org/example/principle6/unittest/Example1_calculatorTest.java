@@ -29,8 +29,9 @@ public class Example1_calculatorTest {
      *      2- Act      (Actuar)         -> realizar la llamada al metodo a probar
      *      3- Assert   (Comprobar)      -> comprobar los resultados
      *
-     * Tambien es muy importate que en los test se debe probar un solo flujo del metodo, si nuestro metodo tiene mas de un
-     * flujo se haran tantos test como sean necesario para probar todas las posibilidades del test
+     * Tambien es muy importate que en los test se pruebe un solo flujo del metodo por test, sin combinar flujos en los test,
+     * es decir si nuestro metodo tiene mas de un flujo se deberan hacer como minimo las misma cantidad de test, se pueden hacer tantos test como sean
+     * necesarios para probar todas las posibilidades del test.
      */
 
     @Test
@@ -80,4 +81,13 @@ public class Example1_calculatorTest {
         // Assert
         Assertions.assertEquals(messageExceptionExpected, result.getMessage());
     }
+
+    /**
+     * Como conclucion es muy importante tener los test unitarios que prueben cada una de nuestras funcionalidaes, ya que si
+     * el dia de mañana se refactoriza alguna de los codigos de las funciones los test nos ayudaran a probar el codigo refactorizado.
+     * Por ejemplo, supongamos que se hace una refactorizacion en el metodo de multiplicar, y el codigo queda mal, al ejecutar los test
+     * nos daremos cuenta que el codigo quedo mal en la refactorizacion por que sin importar como se haga el codigo sabemos que la multiplicacion
+     * de 2 * 3 = 6. que es lo que esta probando el test de multiplicacion. Entonces tendriamos un diagnostico pronto y rapido sobre la
+     * funcionalidad.
+     */
 }
